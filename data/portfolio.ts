@@ -7,11 +7,12 @@ export const profile = {
   email: "subhaiyash@gmail.com",
   github: "https://github.com/imadityaxd",
   githubHandle: "imadityaxd",
-  website: "https://xdcoder.netlify.app/",
+  website: "https://www.xdcoderz.xyz/",
+  businessWebsite: "https://www.xdcoderz.xyz/",
   twitter: "https://x.com/xdcoder_xyz",
   avatar: "https://avatars.githubusercontent.com/u/104629524?v=4",
   headline:
-    "I build intelligent backend systems, automation workflows, computer-vision pipelines, and secure APIs that turn raw data into usable products.",
+    "I build AI and backend systems that turn noisy inputs, messy workflows, and raw data into products people can trust.",
   availability: "Software Engineer Trainee at RoSSarah Services Pvt. Ltd",
 };
 
@@ -24,12 +25,12 @@ export const metrics = [
 
 export const currentlyBuilding = {
   name: "Vivid Store AI",
-  eyebrow: "Currently building",
-  status: "Commercial CCTV retail intelligence system",
+  eyebrow: "On the workbench",
+  status: "CCTV intelligence for real store operations",
   summary:
-    "I'm building a CCTV-based analytics platform that detects people, tracks movement, counts unique visitors, validates camera mapping, supports calibration, and generates multi-camera store reports.",
+    "I am building Vivid Store AI to turn ordinary CCTV into operational intelligence: movement tracking, unique visitor counts, camera-layout checks, and multi-camera reports teams can actually use.",
   impact:
-    "I'm designing it around session isolation, tracker tuning, duplicate suppression, review flags, and source-readiness checks so the analytics can hold up in real store operations.",
+    "The real work is not just detection. I am shaping the reliability layer around session isolation, duplicate suppression, tracker tuning, review states, and source-readiness checks so the output remains credible outside a controlled demo.",
   stack: [
     "Python",
     "FastAPI",
@@ -48,9 +49,9 @@ export const projects = [
     name: "Vivid Store AI",
     type: "AI / Computer Vision",
     summary:
-      "I am building a retail intelligence system for person detection, movement tracking, visitor counting, calibration, and multi-camera reporting.",
+      "I am building a retail intelligence platform that converts existing camera feeds into movement data, visitor counts, calibration workflows, and multi-camera operational reports.",
     details:
-      "I designed the upload and live-source workflow, session isolation, tracking overlays, camera mapping, manual calibration, review tools, and confidence flags.",
+      "My focus is the reliability layer: isolated sessions, camera mapping, duplicate suppression, human review, confidence flags, and workflows for both uploaded footage and live sources.",
     stack: ["Python", "FastAPI", "OpenCV", "YOLOv8", "SQLite", "JavaScript"],
     image:
       "https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1400&q=85",
@@ -59,9 +60,9 @@ export const projects = [
     name: "authApp",
     type: "Secure backend + full-stack auth",
     summary:
-      "I built an authentication platform with stateless JWT sessions, OAuth2 social login, profile APIs, and refresh-token persistence.",
+      "I built an authentication platform around stateless access, OAuth2 social login, profile boundaries, and durable refresh-token rotation.",
     details:
-      "I architected the Spring Security filters, OAuth2 handlers, REST APIs, persistence layer, and React + TypeScript dashboard.",
+      "The architecture spans Spring Security filters, OAuth2 handlers, REST contracts, JPA persistence, and the React interface that exposes the account lifecycle cleanly.",
     stack: [
       "Java",
       "Spring Boot",
@@ -78,9 +79,9 @@ export const projects = [
     name: "Crave-n-Chat",
     type: "Realtime backend system",
     summary:
-      "I built a food-ordering platform with concurrent WebSocket connections for low-latency communication and responsive ordering flows.",
+      "I built a food-ordering and communication platform around concurrent WebSocket connections and low-latency multi-user flows.",
     details:
-      "I implemented the Java and Spring Boot backend, optimized WebSocket handlers for active users, and handled deployment workflows.",
+      "I owned the Java and Spring Boot backend, tightened WebSocket handling under concurrent use, and carried the system through repository and deployment workflows.",
     stack: [
       "Java 21",
       "Spring Boot",
@@ -100,32 +101,32 @@ export const githubHighlights = [
     name: "StoreIntelligenceUSP",
     url: "https://github.com/imadityaxd/StoreIntelligenceUSP",
     language: "Python",
-    description: "Retail intelligence work connected to the Vivid Store AI direction.",
+    description: "Computer-vision experiments and backend foundations behind my Vivid Store AI direction.",
   },
   {
     name: "ai_ml_engineering_assistant",
     url: "https://github.com/imadityaxd/ai_ml_engineering_assistant",
     language: "Python",
     description:
-      "Dual-agent engineering assistant with research and formatter agent responsibilities.",
+      "A dual-agent engineering assistant that separates research, reasoning, and structured output.",
   },
   {
     name: "authApp",
     url: "https://github.com/imadityaxd/authApp",
     language: "TypeScript",
-    description: "Full-stack authentication app using React and Spring Boot.",
+    description: "My complete authentication lifecycle across React, Spring Security, JWT, and OAuth2.",
   },
   {
     name: "cravenChat",
     url: "https://github.com/imadityaxd/cravenChat",
     language: "JavaScript",
-    description: "College submission project tied to realtime chat and food flows.",
+    description: "Realtime communication and food-ordering flows backed by WebSocket-driven interactions.",
   },
   {
     name: "logistics-ai",
     url: "https://github.com/imadityaxd/logistics-ai",
     language: "HTML",
-    description: "AI-flavored logistics interface and experimentation repo.",
+    description: "An exploration of AI-assisted logistics workflows and operational interface design.",
   },
 ];
 
@@ -133,32 +134,32 @@ export const capabilities = [
   {
     icon: "BrainCircuit",
     title: "AI systems",
-    text: "I turn agentic reasoning, OpenAI SDK workflows, and cloud AI tools into practical product features.",
+    text: "I care less about AI as a buzzword and more about making models behave like dependable product features with clear inputs, guardrails, and outcomes.",
   },
   {
     icon: "Eye",
     title: "Computer vision",
-    text: "I build YOLOv8 and OpenCV pipelines for detection, tracking, calibration, validation, and review-ready reporting.",
+    text: "I think in full pipelines: detection, tracking, calibration, validation, and human review working together instead of living as disconnected demos.",
   },
   {
     icon: "Server",
     title: "Backend APIs",
-    text: "I design Spring Boot and FastAPI services with clean contracts, secure auth, persistence, and production-minded structure.",
+    text: "I build Spring Boot and FastAPI services with deliberate contracts, secure boundaries, durable persistence, and structure that can grow without becoming opaque.",
   },
   {
     icon: "ShieldCheck",
     title: "Security",
-    text: "I work with JWT, OAuth2, Spring Security filters, access boundaries, and refresh-token data models.",
+    text: "I treat JWT, OAuth2, Spring Security, refresh-token rotation, and access boundaries as architecture - not as a checkbox before launch.",
   },
   {
     icon: "Activity",
     title: "Realtime systems",
-    text: "I use WebSockets to create low-latency product interactions and dependable multi-user communication.",
+    text: "I design WebSocket-backed interactions around concurrency, predictable state, and communication that still behaves when more users arrive.",
   },
   {
     icon: "Database",
     title: "Data layers",
-    text: "I model data with MySQL, PostgreSQL, SQLite, SQL Server, and JPA/Hibernate around the product's real needs.",
+    text: "I shape schemas and persistence choices around access patterns, reporting needs, and operational reality - not whichever database is fashionable.",
   },
 ];
 
@@ -166,17 +167,17 @@ export const services = [
   {
     index: "01",
     title: "Complete websites",
-    text: "I design and build distinctive responsive websites with clear visual direction, thoughtful motion, and production-ready code.",
+    text: "I turn positioning, visual direction, responsive interaction, and production code into one coherent web presence.",
   },
   {
     index: "02",
     title: "Backend-integrated builds",
-    text: "I connect the interface to secure APIs, authentication, databases, dashboards, and the workflows behind the product.",
+    text: "I connect the interface to the systems that make it useful: secure APIs, authentication, databases, dashboards, and operational workflows.",
   },
   {
     index: "03",
     title: "AI-enabled experiences",
-    text: "I add useful AI features, assistants, search, automation, and computer-vision interfaces to real products.",
+    text: "I design AI assistants, search, automation, and computer-vision interfaces around a real job to be done - not AI for decoration.",
   },
 ];
 
@@ -216,13 +217,13 @@ export const experience = [
     company: "RoSSarah Services Pvt. Ltd",
     role: "Software Engineer Trainee",
     date: "May 2026 - Present",
-    text: "I build software with a focus on automation, backend workflows, and AI-assisted product systems.",
+    text: "I work on automation, backend workflows, and AI-assisted product systems while learning how engineering decisions behave under real delivery constraints.",
   },
   {
     company: "CodeAlpha",
     role: "Software Engineer Trainee",
     date: "Jun 2025 - Jul 2025",
-    text: "I worked across full-stack development tasks and strengthened my applied software engineering fundamentals.",
+    text: "I delivered across the full stack and turned classroom fundamentals into working software, clearer implementation habits, and stronger ownership.",
   },
 ];
 

@@ -16,11 +16,13 @@ import {
   GitBranch,
   Mail,
   MapPin,
+  Menu,
   Moon,
   Server,
   ShieldCheck,
   Sun,
   Terminal,
+  X,
 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -191,18 +193,10 @@ export default function Portfolio() {
     return () => ctx.revert();
   }, []);
 
-  const toggleTheme = () => {
-    const currentTheme =
-      document.documentElement.dataset.theme === "light" ? "light" : "dark";
-    const nextTheme = currentTheme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = nextTheme;
-    localStorage.setItem("xdcoder-theme", nextTheme);
-  };
-
   return (
     <main ref={rootRef} className="site-shell">
       <div className="cursor-grid" aria-hidden="true" />
-      <Header onToggleTheme={toggleTheme} />
+      <Header />
       <Hero />
       <EditorialMarquee />
       <CurrentlyBuilding />
@@ -218,31 +212,60 @@ export default function Portfolio() {
   );
 }
 
-function Header({
-  onToggleTheme,
-}: {
-  onToggleTheme: () => void;
-}) {
+function Header() {
   return (
     <header className="nav-shell">
       <a className="brand-mark" href="#top" aria-label="xdcoderz home">
         <span className="brand-mark__glyph">XD</span>
         <span>{profile.brand}</span>
       </a>
-      <nav className="nav-links" aria-label="Primary navigation">
-        <a href="#building">Building</a>
-        <a href="#projects">Projects</a>
+      <nav
+        id="primary-navigation"
+        className="nav-links nav-links--desktop"
+        aria-label="Primary navigation"
+      >
+        <a href="#building">Build</a>
+        <a href="#projects">Work</a>
         <a href="#services">Services</a>
         <a href="#github">GitHub</a>
         <a href="#stack">Stack</a>
       </nav>
       <div className="nav-actions">
+        <details className="mobile-menu" data-mobile-menu>
+          <summary
+            className="menu-toggle"
+            aria-label="Open navigation menu"
+            title="Navigation menu"
+          >
+            <Menu
+              className="menu-icon menu-icon--open"
+              size={19}
+              aria-hidden="true"
+            />
+            <X
+              className="menu-icon menu-icon--close"
+              size={19}
+              aria-hidden="true"
+            />
+          </summary>
+          <nav
+            id="mobile-navigation"
+            className="mobile-nav"
+            aria-label="Mobile navigation"
+          >
+            <a href="#building" data-mobile-menu-link>Build</a>
+            <a href="#projects" data-mobile-menu-link>Work</a>
+            <a href="#services" data-mobile-menu-link>Services</a>
+            <a href="#github" data-mobile-menu-link>GitHub</a>
+            <a href="#stack" data-mobile-menu-link>Stack</a>
+          </nav>
+        </details>
         <button
           className="theme-toggle"
           type="button"
-          onClick={onToggleTheme}
-          aria-label="Toggle color theme"
-          title="Toggle color theme"
+          data-theme-toggle
+          aria-label="Toggle light/dark theme"
+          title="Toggle light/dark theme"
         >
           <Sun
             className="theme-icon theme-icon--sun"
@@ -255,9 +278,13 @@ function Header({
             aria-hidden="true"
           />
         </button>
-        <a className="nav-cta" href={`mailto:${profile.email}`}>
+        <a
+          className="nav-cta"
+          href={`mailto:${profile.email}`}
+          aria-label="Email Aditya Sharma"
+        >
           <Mail size={16} aria-hidden="true" />
-          Contact
+          <span>Contact</span>
         </a>
       </div>
     </header>
@@ -291,9 +318,9 @@ function Hero() {
           <span>THE <em>DEMO.</em></span>
         </p>
         <p className="hero-copy">
-          I&apos;m {profile.name}, also known as {profile.alias}. I build
-          intelligent backend systems, secure APIs, automation workflows, and
-          computer-vision products with Java, Spring Boot, Python, and FastAPI.
+          I build the part people only notice when it fails: AI pipelines,
+          secure APIs, automation, and backend systems that stay useful after
+          the demo lights turn off.
         </p>
         <div className="hero-actions" aria-label="Primary actions">
           <a className="button-primary magnetic" href="#projects">
@@ -322,7 +349,8 @@ function Hero() {
 }
 
 function EditorialMarquee() {
-  const label = "AI SYSTEMS / BACKEND ENGINEERING / AUTOMATION / WEB BUILDS / ";
+  const label =
+    "COMPUTER VISION / BACKEND ARCHITECTURE / AUTOMATION / PRODUCT ENGINEERING / ";
 
   return (
     <div className="editorial-marquee" aria-hidden="true">
@@ -343,10 +371,15 @@ function SystemHud() {
       </div>
       <div className="hud-profile">
         <div className="hud-avatar">
+          <span className="avatar-fallback" aria-hidden="true">XD</span>
           <Image
             src={profile.avatar}
             alt=""
             fill
+            unoptimized
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
+            }}
             sizes="64px"
           />
         </div>
@@ -465,8 +498,8 @@ function Projects() {
     <section id="projects" className="section">
       <SectionHeader
         eyebrow="Selected systems"
-        title="I turn backend ideas into working products"
-        text="These projects show how I approach computer vision, secure backend design, realtime communication, and complete product delivery."
+        title="Where the demo becomes a real system"
+        text="I like the uncomfortable layer where identity, latency, noisy inputs, persistence, and operational tradeoffs all show up at once. That is where software starts earning trust."
       />
       <div className="project-grid">
         {projects.map((project) => (
@@ -501,9 +534,9 @@ function Capabilities() {
   return (
     <section className="section capability-section">
       <SectionHeader
-        eyebrow="AI + backend capabilities"
-        title="Where I do my best work"
-        text="I care about a polished interface, but my strongest work lives underneath it: backend architecture, AI workflows, and reliable data-backed systems."
+        eyebrow="Engineering range"
+        title="Depth where the product needs it"
+        text="I move across the full path from model output to database state, especially at the boundaries where systems usually get fragile. The experience can stay clean because the engineering underneath is doing its job."
       />
       <div className="capability-grid">
         {capabilities.map((capability) => {
@@ -526,24 +559,32 @@ function Services() {
     <section id="services" className="section services-section">
       <div className="services-intro reveal">
         <span className="eyebrow">Selective client work</span>
-        <h2>I also build websites.</h2>
+        <h2>Websites with substance.</h2>
         <p>
-          My main focus is AI and backend engineering. I also take on a small
-          number of complete website builds for founders, teams, and growing
-          businesses that want something thoughtful and distinctive.
+          I take on a limited number of website builds for people who want more
+          than a template. Positioning, interface, motion, and production code
+          stay connected from the first screen to the final deploy. My business
+          site, XDCoderz, is where that work turns into a focused service and
+          product catalog.
         </p>
       </div>
       <div className="services-layout">
         <div className="service-price reveal">
-          <span>Website projects start at</span>
+          <span>Engagements start at</span>
           <div>
-            <strong>₹30K</strong>
+            <strong>{"\u20B9"}30K</strong>
           </div>
-          <p>INR · scoped around the actual product</p>
-          <a href={`mailto:${profile.email}?subject=Website%20project`}>
-            Discuss a build
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
+          <p>INR - scope follows the problem</p>
+          <div className="service-actions">
+            <a href={`mailto:${profile.email}?subject=Website%20project`}>
+              Discuss a build
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a href={profile.businessWebsite}>
+              Visit XDCoderz
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </div>
         </div>
         <div className="service-list">
           {services.map((service) => (
@@ -566,10 +607,15 @@ function GithubSection() {
     <section id="github" className="section github-section">
       <div className="github-profile reveal">
         <div className="avatar-wrap">
+          <span className="avatar-fallback" aria-hidden="true">XD</span>
           <Image
             src={profile.avatar}
             alt="Aditya Sharma GitHub avatar"
             fill
+            unoptimized
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
+            }}
             sizes="112px"
           />
         </div>
@@ -577,9 +623,9 @@ function GithubSection() {
           <span className="eyebrow">GitHub activity</span>
           <h2>@{profile.githubHandle}</h2>
           <p>
-            I use GitHub as my working archive: 60 public repositories spanning
-            AI experiments, backend systems, authentication, and product
-            prototypes.
+            My GitHub is less trophy shelf, more working notebook. It shows the
+            experiments, architecture choices, and product ideas behind the
+            polished work.
           </p>
         </div>
         <a className="button-secondary" href={profile.github}>
@@ -610,9 +656,9 @@ function Stack() {
   return (
     <section id="stack" className="section stack-section">
       <SectionHeader
-        eyebrow="Tech stack"
-        title="The tools I build with"
-        text="My stack is shaped by the systems I enjoy building: vision pipelines, Java and Python services, dependable data layers, and polished web interfaces."
+        eyebrow="Working stack"
+        title="Chosen for the problem, not the trend"
+        text="I use Java when structure and long-lived services matter, Python when AI and iteration speed lead, and everything else only when it makes the system clearer, faster, or easier to operate."
       />
       <div className="stack-board">
         {stackGroups.map((group) => (
@@ -636,9 +682,9 @@ function Experience() {
   return (
     <section className="section experience-section">
       <SectionHeader
-        eyebrow="My experience"
-        title="How I got here"
-        text="A short timeline of the roles and academic work that continue to shape how I think and build."
+        eyebrow="Experience"
+        title="Still early. Already shipping."
+        text="I am still early in the journey, but I am already doing the kind of work I want more of: technically demanding systems with visible product impact."
       />
       <div className="timeline">
         {experience.map((item) => (
@@ -673,13 +719,12 @@ function About() {
     <section className="section about-section">
       <div className="about-copy reveal">
         <span className="eyebrow">About xdcoder</span>
-        <h2>I build the parts people rarely notice, until they work.</h2>
+        <h2>I like problems that refuse to stay in one layer.</h2>
         <p>
-          I&apos;m a Computer Science student and software engineer trainee
-          focused on AI workflows, backend architecture, automation, and
-          production-ready application logic. I care about frontend quality
-          because it makes complex systems easier to understand, but I&apos;m
-          backend-first at heart.
+          The work that holds my attention rarely fits inside a neat label. It
+          might begin with a model, run through an API, collide with imperfect
+          data, and finally need an interface that makes the complexity feel
+          simple. That full path is where I&apos;m most useful.
         </p>
       </div>
       <div className="cert-panel reveal">
@@ -696,20 +741,20 @@ function Contact() {
   return (
     <section className="contact-section">
       <div className="contact-inner reveal">
-        <span className="eyebrow">Build signal</span>
-        <h2>Have an AI, backend, or automation idea worth shipping?</h2>
+        <span className="eyebrow">Start a conversation</span>
+        <h2>Bring the hard part. We can make it shippable.</h2>
         <p>
-          Tell me what you&apos;re trying to build. I can help with backend
-          systems, AI-enabled tools, secure APIs, product prototypes, and
-          selective website projects.
+          If the idea involves AI, backend architecture, automation, or a
+          website that needs more than a template, send the context. I&apos;ll
+          tell you where I can create leverage.
         </p>
         <div className="hero-actions">
           <a className="button-primary" href={`mailto:${profile.email}`}>
             <Mail size={18} aria-hidden="true" />
             {profile.email}
           </a>
-          <a className="button-secondary" href={profile.website}>
-            Existing site
+          <a className="button-secondary" href={profile.businessWebsite}>
+            XDCoderz business
             <ArrowUpRight size={18} aria-hidden="true" />
           </a>
         </div>
