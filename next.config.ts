@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  basePath: "/portfolio",
 };
 
 export default nextConfig;
